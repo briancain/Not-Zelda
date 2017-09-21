@@ -18,12 +18,14 @@ public class Player : MonoBehaviour {
   private SpriteRenderer sr;
   private Sprite[] sprites;
   private string[] spriteNames;
+  private Animator animator;
 
   // Use this for initialization
   void Start () {
     playerSpeed = 1.0f;
     health = 3f;
     rb = gameObject.GetComponent<Rigidbody2D>();
+    animator = gameObject.GetComponent<Animator>();
 
     sr = gameObject.GetComponent<SpriteRenderer>();
     sprites = Resources.LoadAll<Sprite>("Sprites/Link");
@@ -48,12 +50,14 @@ public class Player : MonoBehaviour {
 
     var move = new Vector3(horizontal, vertical, 0);
     if (horizontal != 0f || vertical != 0f) {
+      animator.SetBool("Idle", false);
       Debug.Log("Moving Link..");
       Debug.Log(move);
+      UpdateSprite(move);
+      transform.position += move * playerSpeed * Time.deltaTime;
+    } else {
+      animator.SetBool("Idle", true);
     }
-
-    UpdateSprite(move);
-    transform.position += move * playerSpeed * Time.deltaTime;
   }
 
   int GetSpriteIndex(string name) {
@@ -62,13 +66,16 @@ public class Player : MonoBehaviour {
 
   void UpdateSprite(Vector3 move) {
     // update to play animations for walking
+    // instead of updating the sprite
     int s;
 
     if (move.y > 0) {
       s = GetSpriteIndex("link-backward_4");
+      sr.flipX = false;
       sr.sprite = sprites[s];
     } else if (move.y < 0) {
       s = GetSpriteIndex("link-forward_4");
+      sr.flipX = false;
       sr.sprite = sprites[s];
     }
 
