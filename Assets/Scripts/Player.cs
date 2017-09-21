@@ -26,13 +26,15 @@ public class Player : MonoBehaviour {
     rb = gameObject.GetComponent<Rigidbody2D>();
 
     sr = gameObject.GetComponent<SpriteRenderer>();
-    sprites = Resources.LoadAll<Sprite>("Sprites");
+    sprites = Resources.LoadAll<Sprite>("Sprites/Link");
 
     spriteNames = new string[sprites.Length];
     for (int i=0; i < sprites.Length; i++) {
       spriteNames[i] = sprites[i].name;
     }
-    Debug.Log("Loaded sprites: " + sprites.Length);
+    int index = GetSpriteIndex("link-forward_4");
+    sr.sprite = sprites[index];
+    Debug.Log("Loaded Link sprites: " + sprites.Length);
   }
 
   // Update is called once per frame
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour {
   }
 
   void UpdateSprite(Vector3 move) {
+    // update to play animations for walking
     int s;
 
     if (move.y > 0) {
