@@ -65,40 +65,22 @@ public class Player : MonoBehaviour {
   }
 
   void UpdateSprite(Vector3 move, bool idle) {
-    // update to play animations for walking
-    // instead of updating the sprite
-    int s;
     animator.SetBool("Idle", idle);
 
     if (move.y > 0) {
       // backwards
-      //s = GetSpriteIndex("link-backward_4");
-      //sr.flipX = false;
-      //sr.sprite = sprites[s];
       animator.SetInteger("Direction", 1);
     }
-
     if (move.y < 0) {
       // forward
-      //s = GetSpriteIndex("link-forward_4");
-      //sr.flipX = false;
-      //sr.sprite = sprites[s];
       animator.SetInteger("Direction", 2);
     }
-
     if (move.x > 0) {
       // sideways right
-      //s = GetSpriteIndex("link-sideways_3");
-      //sr.sprite = sprites[s];
-      //sr.flipX = false;
       animator.SetInteger("Direction", 3);
     }
-
     if (move.x < 0) {
       // sideways left
-      //s = GetSpriteIndex("link-sideways_3");
-      //sr.sprite = sprites[s];
-      //sr.flipX = true;
       animator.SetInteger("Direction", 4);
     }
 
