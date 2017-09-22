@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
   // Physics
   private float playerSpeed;
+  private float damage;
   private Rigidbody2D rb;
   //
 
@@ -23,11 +24,24 @@ public class Player : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-    playerSpeed = 1.0f;
-    health = 3f;
     rb = gameObject.GetComponent<Rigidbody2D>();
     animator = gameObject.GetComponent<Animator>();
 
+    initPlayer();
+  }
+
+  void initPlayer() {
+    playerSpeed = 1.0f;
+    health = 3f;
+    damage = 1f;
+    magic = 0f;
+  }
+
+  int GetSpriteIndex(string name) {
+    return Array.IndexOf(spriteNames, name);
+  }
+
+  void LoadSprites() {
     sr = gameObject.GetComponent<SpriteRenderer>();
     sprites = Resources.LoadAll<Sprite>("Sprites/Link");
 
@@ -36,10 +50,6 @@ public class Player : MonoBehaviour {
       spriteNames[i] = sprites[i].name;
     }
     Debug.Log("Loaded Link sprites: " + sprites.Length);
-  }
-
-  int GetSpriteIndex(string name) {
-    return Array.IndexOf(spriteNames, name);
   }
 
   // Update is called once per frame
