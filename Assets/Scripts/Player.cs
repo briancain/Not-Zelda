@@ -34,8 +34,6 @@ public class Player : MonoBehaviour {
     for (int i=0; i < sprites.Length; i++) {
       spriteNames[i] = sprites[i].name;
     }
-    int index = GetSpriteIndex("link-forward_4");
-    sr.sprite = sprites[index];
     Debug.Log("Loaded Link sprites: " + sprites.Length);
   }
 
@@ -47,46 +45,67 @@ public class Player : MonoBehaviour {
   void Move() {
     float horizontal = Input.GetAxis("Horizontal");
     float vertical = Input.GetAxis("Vertical");
+    bool idle;
 
     var move = new Vector3(horizontal, vertical, 0);
     if (horizontal != 0f || vertical != 0f) {
-      animator.SetBool("Idle", false);
+      idle = false;
       Debug.Log("Moving Link..");
       Debug.Log(move);
-      UpdateSprite(move);
       transform.position += move * playerSpeed * Time.deltaTime;
     } else {
-      animator.SetBool("Idle", true);
+      idle = true;
     }
+
+    UpdateSprite(move, idle);
   }
 
   int GetSpriteIndex(string name) {
     return Array.IndexOf(spriteNames, name);
   }
 
-  void UpdateSprite(Vector3 move) {
+  void UpdateSprite(Vector3 move, bool idle) {
     // update to play animations for walking
     // instead of updating the sprite
     int s;
+    animator.SetBool("Idle", idle);
 
     if (move.y > 0) {
-      s = GetSpriteIndex("link-backward_4");
-      sr.flipX = false;
-      sr.sprite = sprites[s];
-    } else if (move.y < 0) {
-      s = GetSpriteIndex("link-forward_4");
-      sr.flipX = false;
-      sr.sprite = sprites[s];
+      // backwards
+      //s = GetSpriteIndex("link-backward_4");
+      //sr.flipX = false;
+      //sr.sprite = sprites[s];
+      animator.SetInteger("Direction", 1);
+    }
+
+    if (move.y < 0) {
+      // forward
+      //s = GetSpriteIndex("link-forward_4");
+      //sr.flipX = false;
+      //sr.sprite = sprites[s];
+      animator.SetInteger("Direction", 2);
     }
 
     if (move.x > 0) {
-      s = GetSpriteIndex("link-sideways_3");
-      sr.sprite = sprites[s];
-      sr.flipX = false;
-    } else if (move.x < 0) {
-      s = GetSpriteIndex("link-sideways_3");
-      sr.sprite = sprites[s];
-      sr.flipX = true;
+      // sideways right
+      //s = GetSpriteIndex("link-sideways_3");
+      //sr.sprite = sprites[s];
+      //sr.flipX = false;
+      animator.SetInteger("Direction", 3);
     }
+
+    if (move.x < 0) {
+      // sideways left
+      //s = GetSpriteIndex("link-sideways_3");
+      //sr.sprite = sprites[s];
+      //sr.flipX = true;
+      animator.SetInteger("Direction", 4);
+    }
+
+    if (!idle) {
+      Debug.Log("Animators Idle: " + animator.GetBool("Idle"));
+      Debug.Log("Animators Direction: " + animator.GetInteger("Direction"));
+    }
+
   }
 }
