@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
 
   // Health, Items
   private float health;
+  private float magic;
   //
 
   // Unity data
