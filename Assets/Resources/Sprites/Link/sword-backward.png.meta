@@ -1,23 +1,18 @@
 fileFormatVersion: 2
-guid: 4ec1f5351aac9471ab7ebe62dfcd3132
-timeCreated: 1506016307
+guid: b708b206acaac44048c4d4c047a37e15
+timeCreated: 1506103866
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: link-sideways_0
-    21300002: link-sideways_1
-    21300004: link-sideways_2
-    21300006: link-sideways_3
-    21300008: link-sideways_4
-    21300010: link-sideways_5
-    21300012: link-sideways_6
-    21300014: link-sideways_7
-    21300016: link-sideways_8
-    21300018: link-sideways_9
-    21300020: link-sideways_10
-    21300022: link-sideways_11
-    21300024: link-sideways_12
-    21300026: link-sideways_13
+    21300000: sword-backward_0
+    21300002: sword-backward_1
+    21300004: sword-backward_2
+    21300006: sword-backward_3
+    21300008: sword-backward_4
+    21300010: sword-backward_5
+    21300012: sword-backward_6
+    21300014: sword-backward_7
+    21300016: sword-backward_8
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -84,25 +79,38 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: link-sideways_0
+      name: sword-backward_0
       rect:
         serializedVersion: 2
         x: 8
-        y: 35
-        width: 16
-        height: 23
+        y: 8
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_1
+      name: sword-backward_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 35
-        width: 16
+        x: 39
+        y: 8
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sword-backward_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 8
+        width: 23
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -110,155 +118,77 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_2
+      name: sword-backward_3
       rect:
         serializedVersion: 2
-        x: 56
-        y: 35
-        width: 16
-        height: 24
+        x: 101
+        y: 8
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_3
+      name: sword-backward_4
       rect:
         serializedVersion: 2
-        x: 78
-        y: 35
-        width: 16
-        height: 23
+        x: 131
+        y: 8
+        width: 20
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_4
+      name: sword-backward_5
       rect:
         serializedVersion: 2
-        x: 102
-        y: 35
-        width: 16
-        height: 24
+        x: 156
+        y: 8
+        width: 20
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_5
+      name: sword-backward_6
       rect:
         serializedVersion: 2
-        x: 126
-        y: 35
-        width: 16
-        height: 24
+        x: 180
+        y: 8
+        width: 24
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_6
+      name: sword-backward_7
       rect:
         serializedVersion: 2
-        x: 148
-        y: 35
-        width: 17
-        height: 23
+        x: 207
+        y: 8
+        width: 29
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link-sideways_7
+      name: sword-backward_8
       rect:
         serializedVersion: 2
-        x: 10
-        y: 5
-        width: 18
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link-sideways_8
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 5
-        width: 18
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link-sideways_9
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 5
-        width: 19
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link-sideways_10
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 5
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link-sideways_11
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 5
-        width: 19
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link-sideways_12
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 5
-        width: 18
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link-sideways_13
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 5
-        width: 19
+        x: 242
+        y: 8
+        width: 32
         height: 23
       alignment: 0
       pivot: {x: 0, y: 0}

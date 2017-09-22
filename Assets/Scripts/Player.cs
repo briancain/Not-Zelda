@@ -39,33 +39,38 @@ public class Player : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    Move();
-  }
-
-  void Move() {
     float horizontal = Input.GetAxis("Horizontal");
     float vertical = Input.GetAxis("Vertical");
-    bool idle;
+    float attack = Input.GetAxis("Fire1");
+    bool idle, attacking;
 
     var move = new Vector3(horizontal, vertical, 0);
     if (horizontal != 0f || vertical != 0f) {
       idle = false;
+      attacking = false;
       Debug.Log("Moving Link..");
       Debug.Log(move);
       transform.position += move * playerSpeed * Time.deltaTime;
-    } else {
+    } else if (attack != 0f) {
+      Debug.Log("Attack!");
+      idle = false;
+      attacking = true;
+    }
+    else {
       idle = true;
+      attacking = false;
     }
 
-    UpdateSprite(move, idle);
+    UpdateSprite(move, idle, attacking);
   }
 
   int GetSpriteIndex(string name) {
     return Array.IndexOf(spriteNames, name);
   }
 
-  void UpdateSprite(Vector3 move, bool idle) {
+  void UpdateSprite(Vector3 move, bool idle, bool attacking) {
     animator.SetBool("Idle", idle);
+    animator.SetBool("Attacking", attacking);
 
     if (move.y > 0) {
       // backwards
