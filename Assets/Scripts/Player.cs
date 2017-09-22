@@ -37,6 +37,10 @@ public class Player : MonoBehaviour {
     Debug.Log("Loaded Link sprites: " + sprites.Length);
   }
 
+  int GetSpriteIndex(string name) {
+    return Array.IndexOf(spriteNames, name);
+  }
+
   // Update is called once per frame
   void Update () {
     float horizontal = Input.GetAxis("Horizontal");
@@ -48,11 +52,8 @@ public class Player : MonoBehaviour {
     if (horizontal != 0f || vertical != 0f) {
       idle = false;
       attacking = false;
-      Debug.Log("Moving Link..");
-      Debug.Log(move);
       transform.position += move * playerSpeed * Time.deltaTime;
     } else if (attack != 0f) {
-      Debug.Log("Attack!");
       idle = false;
       attacking = true;
     }
@@ -62,10 +63,6 @@ public class Player : MonoBehaviour {
     }
 
     UpdateSprite(move, idle, attacking);
-  }
-
-  int GetSpriteIndex(string name) {
-    return Array.IndexOf(spriteNames, name);
   }
 
   void UpdateSprite(Vector3 move, bool idle, bool attacking) {
@@ -88,11 +85,5 @@ public class Player : MonoBehaviour {
       // sideways left
       animator.SetInteger("Direction", 4);
     }
-
-    if (!idle) {
-      Debug.Log("Animators Idle: " + animator.GetBool("Idle"));
-      Debug.Log("Animators Direction: " + animator.GetInteger("Direction"));
-    }
-
   }
 }
