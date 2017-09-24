@@ -16,6 +16,11 @@ public class Player : MonoBehaviour {
   private float magic;
   //
 
+  // Player State
+  private bool idle;
+  private bool attacking;
+  //
+
   // Unity data
   private SpriteRenderer sr;
   private Sprite[] sprites;
@@ -57,7 +62,6 @@ public class Player : MonoBehaviour {
     float horizontal = Input.GetAxis("Horizontal") * playerSpeed;
     float vertical = Input.GetAxis("Vertical") * playerSpeed;
     float attack = Input.GetAxis("Fire1");
-    bool idle, attacking;
 
     var move = new Vector3(horizontal, vertical, 0);
     if (horizontal != 0f || vertical != 0f) {
@@ -75,10 +79,10 @@ public class Player : MonoBehaviour {
 
     rb.velocity = new Vector2(horizontal, vertical);
 
-    UpdateSprite(move, idle, attacking);
+    UpdateSprite(move);
   }
 
-  void UpdateSprite(Vector3 move, bool idle, bool attacking) {
+  void UpdateSprite(Vector3 move) {
     animator.SetBool("Idle", idle);
     animator.SetBool("Attacking", attacking);
 
@@ -101,8 +105,23 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D coll) {
-    if (coll.gameObject.tag == "Enemy") {
-      Debug.Log("Colliding");
+    if (coll.gameObject.tag == "Enemy" && attacking) {
+      Debug.Log("Attack");
+      // pass in gameobject of enemy
+      Attack();
+    }
+  }
+
+  void Attack() {
+
+  }
+
+  public void Damage(float dmg) {
+    health -= dmg;
+    // play damange animation
+
+    if (health <= 0f) {
+      // game over
     }
   }
 }
