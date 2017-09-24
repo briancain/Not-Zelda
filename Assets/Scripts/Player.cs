@@ -54,8 +54,8 @@ public class Player : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    float horizontal = Input.GetAxis("Horizontal");
-    float vertical = Input.GetAxis("Vertical");
+    float horizontal = Input.GetAxis("Horizontal") * playerSpeed;
+    float vertical = Input.GetAxis("Vertical") * playerSpeed;
     float attack = Input.GetAxis("Fire1");
     bool idle, attacking;
 
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
     if (horizontal != 0f || vertical != 0f) {
       idle = false;
       attacking = false;
-      transform.position += move * playerSpeed * Time.deltaTime;
+      //transform.position += move * playerSpeed * Time.deltaTime;
     } else if (attack != 0f) {
       idle = false;
       attacking = true;
@@ -72,6 +72,8 @@ public class Player : MonoBehaviour {
       idle = true;
       attacking = false;
     }
+
+    rb.velocity = new Vector2(horizontal, vertical);
 
     UpdateSprite(move, idle, attacking);
   }
@@ -96,5 +98,8 @@ public class Player : MonoBehaviour {
       // sideways left
       animator.SetInteger("Direction", 4);
     }
+  }
+
+  void OnCollisionEnter2D(Collision2D coll) {
   }
 }
