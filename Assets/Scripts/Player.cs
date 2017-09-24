@@ -101,5 +101,8 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D coll) {
+    if (coll.gameObject.tag == "Enemy") {
+      Debug.Log("Colliding");
+    }
   }
 }
