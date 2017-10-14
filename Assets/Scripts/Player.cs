@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
   // Physics
   private float playerSpeed;
-  private float damage;
+  private float attack;
   private Rigidbody2D rb;
   //
 
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour {
   void initPlayer() {
     playerSpeed = 1.0f;
     health = 3f;
-    damage = 1f;
+    attack = 1f;
     magic = 0f;
   }
 
@@ -108,12 +108,16 @@ public class Player : MonoBehaviour {
     if (coll.gameObject.tag == "Enemy" && attacking) {
       Debug.Log("Attack");
       // pass in gameobject of enemy
-      Attack();
+      Attack(coll);
     }
   }
 
-  void Attack() {
-
+  void Attack(Collision2D coll) {
+    GameObject enemy = coll.gameObject;
+    if (enemy.tag == "Enemy") {
+      Debug.Log("Damaging enemy...");
+      //enemy.Damage(attack);
+    }
   }
 
   public void Damage(float dmg) {
