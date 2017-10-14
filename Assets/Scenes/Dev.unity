@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 2908837}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Player 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -477,6 +477,10 @@ Prefab:
     - target: {fileID: 4174707029721918, guid: 74db8feac5bd9433082478c39d6aa266, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765505760319680, guid: 74db8feac5bd9433082478c39d6aa266, type: 2}
+      propertyPath: m_TagString
+      value: Player 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74db8feac5bd9433082478c39d6aa266, type: 2}

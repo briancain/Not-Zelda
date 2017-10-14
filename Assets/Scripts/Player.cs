@@ -27,6 +27,10 @@ public class Player : MonoBehaviour {
   private string[] spriteNames;
   private Animator animator;
 
+  // Other
+  private const string PLAYER_ONE = "Player 1";
+  private const string PLAYER_TWO = "Player 2";
+
   // Use this for initialization
   void Start () {
     rb = gameObject.GetComponent<Rigidbody2D>();
@@ -59,27 +63,31 @@ public class Player : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    float horizontal = Input.GetAxis("Horizontal") * playerSpeed;
-    float vertical = Input.GetAxis("Vertical") * playerSpeed;
-    float attack = Input.GetAxis("Fire1");
+    if (this.gameObject.tag == PLAYER_ONE) {
+      float horizontal = Input.GetAxis("Horizontal") * playerSpeed;
+      float vertical = Input.GetAxis("Vertical") * playerSpeed;
+      float attack = Input.GetAxis("Fire1");
 
-    var move = new Vector3(horizontal, vertical, 0);
-    if (horizontal != 0f || vertical != 0f) {
-      idle = false;
-      attacking = false;
-      //transform.position += move * playerSpeed * Time.deltaTime;
-    } else if (attack != 0f) {
-      idle = false;
-      attacking = true;
+      var move = new Vector3(horizontal, vertical, 0);
+      if (horizontal != 0f || vertical != 0f) {
+        idle = false;
+        attacking = false;
+        //transform.position += move * playerSpeed * Time.deltaTime;
+      } else if (attack != 0f) {
+        idle = false;
+        attacking = true;
+      }
+      else {
+        idle = true;
+        attacking = false;
+      }
+
+      rb.velocity = new Vector2(horizontal, vertical);
+
+      UpdateSprite(move);
+    } else if (this.gameObject.tag == "Player 2") {
+
     }
-    else {
-      idle = true;
-      attacking = false;
-    }
-
-    rb.velocity = new Vector2(horizontal, vertical);
-
-    UpdateSprite(move);
   }
 
   void UpdateSprite(Vector3 move) {
