@@ -146,12 +146,13 @@ public class Player : MonoBehaviour {
 
     Debug.Log("Health: " + health);
     if (health <= 0f) {
+      Debug.Log("Dead");
       // Trigger death animation
       dead = true;
       // game over
       // This Scene Manager call should prboably go
       // in the GameManager class once it's written
-      SceneManager.LoadScene("GameOver");
+      //SceneManager.LoadScene("GameOver");
     }
   }
 }
