@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -140,6 +141,9 @@ public class Player : MonoBehaviour {
     Debug.Log("Health: " + health);
     if (health <= 0f) {
       // game over
+      // This Scene Manager call should prboably go
+      // in the GameManager class once it's written
+      SceneManager.LoadScene("GameOver");
     }
   }
 }
