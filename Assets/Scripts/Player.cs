@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
   // Player State
   private bool idle;
   private bool attacking;
+  private bool dead;
   //
 
   // Unity data
@@ -41,6 +42,10 @@ public class Player : MonoBehaviour {
   }
 
   void initPlayer() {
+    // state
+    dead = false;
+
+    // settings
     playerSpeed = 1.0f;
     health = 3f;
     attack = 1f;
@@ -120,6 +125,7 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D coll) {
+    Debug.Log("Collision...");
     if (coll.gameObject.tag == "Enemy" && attacking) {
       Debug.Log("Attack");
       // pass in gameobject of enemy
@@ -140,6 +146,8 @@ public class Player : MonoBehaviour {
 
     Debug.Log("Health: " + health);
     if (health <= 0f) {
+      // Trigger death animation
+      dead = true;
       // game over
       // This Scene Manager call should prboably go
       // in the GameManager class once it's written
