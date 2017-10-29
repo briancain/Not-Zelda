@@ -63,31 +63,37 @@ public class Player : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
+    Vector3 move;
+    float horizontal = 0f;
+    float vertical = 0f;
+    float attack = 0f;
+
     if (this.gameObject.tag == PLAYER_ONE) {
-      float horizontal = Input.GetAxis("Horizontal") * playerSpeed;
-      float vertical = Input.GetAxis("Vertical") * playerSpeed;
-      float attack = Input.GetAxis("Fire1");
-
-      var move = new Vector3(horizontal, vertical, 0);
-      if (horizontal != 0f || vertical != 0f) {
-        idle = false;
-        attacking = false;
-        //transform.position += move * playerSpeed * Time.deltaTime;
-      } else if (attack != 0f) {
-        idle = false;
-        attacking = true;
-      }
-      else {
-        idle = true;
-        attacking = false;
-      }
-
-      rb.velocity = new Vector2(horizontal, vertical);
-
-      UpdateSprite(move);
-    } else if (this.gameObject.tag == "Player 2") {
-
+      horizontal = Input.GetAxis("Horizontal") * playerSpeed;
+      vertical = Input.GetAxis("Vertical") * playerSpeed;
+      attack = Input.GetAxis("Fire1");
+    } else if (this.gameObject.tag == PLAYER_TWO) {
+      horizontal = Input.GetAxis("Horizontal2") * playerSpeed;
+      vertical = Input.GetAxis("Vertical2") * playerSpeed;
+      attack = Input.GetAxis("Fire2");
     }
+
+    move = new Vector3(horizontal, vertical, 0);
+    if (horizontal != 0f || vertical != 0f) {
+      idle = false;
+      attacking = false;
+    } else if (attack != 0f) {
+      idle = false;
+      attacking = true;
+    }
+    else {
+      idle = true;
+      attacking = false;
+    }
+
+    rb.velocity = new Vector2(horizontal, vertical);
+
+    UpdateSprite(move);
   }
 
   void UpdateSprite(Vector3 move) {
@@ -122,16 +128,16 @@ public class Player : MonoBehaviour {
 
   void Attack(Collision2D coll) {
     GameObject enemy = coll.gameObject;
-    if (enemy.tag == "Enemy") {
-      Debug.Log("Damaging enemy...");
-      //enemy.Damage(attack);
-    }
+    Debug.Log("Damaging enemy...");
+
+    enemy.GetComponent<Player>().Damage(attack);
   }
 
   public void Damage(float dmg) {
     health -= dmg;
     // play damange animation
 
+    Debug.Log("Health: " + health);
     if (health <= 0f) {
       // game over
     }
