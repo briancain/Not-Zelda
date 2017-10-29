@@ -125,7 +125,6 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D coll) {
-    Debug.Log("Collision...");
     if (coll.gameObject.tag == "Enemy" && attacking) {
       Debug.Log("Attack");
       // pass in gameobject of enemy
@@ -149,6 +148,7 @@ public class Player : MonoBehaviour {
       Debug.Log("Dead");
       // Trigger death animation
       dead = true;
+      animator.SetBool("Dead", dead);
       // game over
       // This Scene Manager call should prboably go
       // in the GameManager class once it's written
